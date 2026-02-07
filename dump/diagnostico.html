@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico - Valentine Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #FFB6D9 0%, #D4A5E0 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(45, 27, 105, 0.2);
+        }
+        
+        h1 {
+            color: #2D1B69;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .diagnostic-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #F8F8F8;
+            border-left: 4px solid #FF6B9D;
+            border-radius: 8px;
+        }
+        
+        .diagnostic-section h2 {
+            color: #FF6B9D;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .check-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .check-item .status {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .check-item .status.ok {
+            background: #4CAF50;
+        }
+        
+        .check-item .status.warning {
+            background: #FF9800;
+        }
+        
+        .check-item .status.error {
+            background: #F44336;
+        }
+        
+        .info-box {
+            background: #E3F2FD;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #2196F3;
+            color: #1565C0;
+        }
+        
+        button {
+            background: #FF6B9D;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: #FF8AB3;
+            transform: translateY(-2px);
+        }
+        
+        .console-output {
+            background: #1E1E1E;
+            color: #00FF00;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 1rem;
+        }
+        
+        .console-output div {
+            margin-bottom: 0.5rem;
+        }
+        
+        .warning { color: #FFB6D9; }
+        .success { color: #4CAF50; }
+        .error { color: #F44336; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Diagnóstico de Valentine Landing Page</h1>
+        
+        <!-- Browser Compatibility -->
+        <div class="diagnostic-section">
+            <h2>📱 Compatibilidad del Navegador</h2>
+            <div id="browserDiags"></div>
+        </div>
+        
+        <!-- Libraries Check -->
+        <div class="diagnostic-section">
+            <h2>📚 Librerías Externas</h2>
+            <div id="librariesDiags"></div>
+            <button onclick="testLibraries()">Probar Librerías</button>
+        </div>
+        
+        <!-- Performance -->
+        <div class="diagnostic-section">
+            <h2>⚡ Rendimiento</h2>
+            <div id="performanceDiags"></div>
+        </div>
+        
+        <!-- File Check -->
+        <div class="diagnostic-section">
+            <h2>📂 Verificación de Archivos</h2>
+            <div id="fileDiags"></div>
+        </div>
+        
+        <!-- CSS Features -->
+        <div class="diagnostic-section">
+            <h2>🎨 Características CSS</h2>
+            <div id="cssDiags"></div>
+        </div>
+        
+        <!-- Network -->
+        <div class="diagnostic-section">
+            <h2>🌐 Conexión de Red</h2>
+            <div id="networkDiags"></div>
+        </div>
+        
+        <!-- Console Output -->
+        <div class="diagnostic-section">
+            <h2>📋 Consola de Diagnóstico</h2>
+            <div class="console-output" id="consoleOutput"></div>
+            <button onclick="clearConsole()">Limpiar Consola</button>
+        </div>
+    </div>
+
+    <script>
+        // Logger personalizado
+        const logs = [];
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+        
+        console.log = function(...args) {
+            originalLog(...args);
+            logs.push({ type: 'log', message: args.join(' ') });
+            updateConsoleOutput();
+        };
+        
+        console.error = function(...args) {
+            originalError(...args);
+            logs.push({ type: 'error', message: args.join(' ') });
+            updateConsoleOutput();
+        };
+        
+        console.warn = function(...args) {
+            originalWarn(...args);
+            logs.push({ type: 'warn', message: args.join(' ') });
+            updateConsoleOutput();
+        };
+        
+        function updateConsoleOutput() {
+            const consoleOutput = document.getElementById('consoleOutput');
+            consoleOutput.innerHTML = logs.map(log => {
+                const className = log.type === 'error' ? 'error' : log.type === 'warn' ? 'warning' : 'success';
+                return `<div class="${className}">[${log.type.toUpperCase()}] ${log.message}</div>`;
+            }).join('');
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+        
+        function clearConsole() {
+            logs.length = 0;
+            updateConsoleOutput();
+        }
+        
+        // ============================================
+        // DIAGNOSTIC FUNCTIONS
+        // ============================================
+        
+        function createCheckItem(status, text) {
+            const statusClass = status === 'ok' ? 'ok' : status === 'warning' ? 'warning' : 'error';
+            const statusText = status === 'ok' ? '✓' : status === 'warning' ? '⚠' : '✗';
+            return `<div class="check-item"><div class="status ${statusClass}">${statusText}</div><div>${text}</div></div>`;
+        }
+        
+        function getBrowserDiagnostics() {
+            const html = [];
+            const ua = navigator.userAgent;
+            
+            // Browser detection
+            if (ua.includes('Chrome')) {
+                html.push(createCheckItem('ok', 'Navegador: Google Chrome (Compatible)'));
+            } else if (ua.includes('Firefox')) {
+                html.push(createCheckItem('ok', 'Navegador: Mozilla Firefox (Compatible)'));
+            } else if (ua.includes('Safari')) {
+                html.push(createCheckItem('ok', 'Navegador: Safari (Compatible)'));
+            } else if (ua.includes('Edge')) {
+                html.push(createCheckItem('ok', 'Navegador: Microsoft Edge (Compatible)'));
+            } else {
+                html.push(createCheckItem('warning', 'Navegador: Desconocido (Puede haber problemas)'));
+            }
+            
+            // JavaScript enabled
+            html.push(createCheckItem('ok', 'JavaScript: Habilitado'));
+            
+            // Viewport
+            html.push(createCheckItem('ok', `Resolución: ${window.innerWidth}x${window.innerHeight}`));
+            
+            // Device
+            const isMobile = /Mobile|Android|iPhone/i.test(ua);
+            html.push(createCheckItem(isMobile ? 'ok' : 'ok', `Dispositivo: ${isMobile ? 'Móvil' : 'Desktop'}`));
+            
+            document.getElementById('browserDiags').innerHTML = html.join('');
+            console.log('Browser diagnostics completed');
+        }
+        
+        function getLibrariesDiagnostics() {
+            const html = [];
+            
+            // Lottie Player
+            if (typeof LottiePlayer !== 'undefined') {
+                html.push(createCheckItem('ok', 'Lottie Player: Cargado'));
+            } else {
+                html.push(createCheckItem('error', 'Lottie Player: NO CARGADO'));
+            }
+            
+            // Canvas Confetti
+            if (typeof confetti !== 'undefined') {
+                html.push(createCheckItem('ok', 'Canvas Confetti: Cargado'));
+            } else {
+                html.push(createCheckItem('error', 'Canvas Confetti: NO CARGADO'));
+            }
+            
+            // Google Fonts
+            const fontLoaded = document.fonts.check('12px "Playfair Display"');
+            html.push(createCheckItem(fontLoaded ? 'ok' : 'warning', `Playfair Display: ${fontLoaded ? 'Cargado' : 'Cargando...'}`));
+            
+            const fontLoaded2 = document.fonts.check('12px "Inter"');
+            html.push(createCheckItem(fontLoaded2 ? 'ok' : 'warning', `Inter: ${fontLoaded2 ? 'Cargado' : 'Cargando...'}`));
+            
+            document.getElementById('librariesDiags').innerHTML = html.join('');
+        }
+        
+        function getPerformanceDiagnostics() {
+            const html = [];
+            
+            // Memory
+            if (performance.memory) {
+                const usedMemory = Math.round(performance.memory.usedJSHeapSize / 1048576);
+                const totalMemory = Math.round(performance.memory.jsHeapSizeLimit / 1048576);
+                html.push(createCheckItem('ok', `Memoria: ${usedMemory}/${totalMemory} MB`));
+            }
+            
+            // Load time
+            if (performance.timing) {
+                const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+                const status = loadTime < 3000 ? 'ok' : loadTime < 5000 ? 'warning' : 'error';
+                html.push(createCheckItem(status, `Tiempo de carga: ${loadTime}ms`));
+            }
+            
+            // FPS estimation
+            html.push(createCheckItem('ok', 'Aceleración por hardware: Detectando...'));
+            
+            document.getElementById('performanceDiags').innerHTML = html.join('');
+        }
+        
+        function getFilesDiagnostics() {
+            const html = [];
+            
+            // Check if styles are loaded
+            const stylesLoaded = document.styleSheets.length > 0;
+            html.push(createCheckItem(stylesLoaded ? 'ok' : 'error', `Estilos CSS: ${stylesLoaded ? 'Cargados' : 'NO CARGADOS'}`));
+            
+            // Check if main elements exist
+            const heroSection = document.querySelector('.hero');
+            html.push(createCheckItem(heroSection ? 'ok' : 'error', `Hero Section: ${heroSection ? 'Encontrado' : 'NO ENCONTRADO'}`));
+            
+            const timelineSection = document.querySelector('.timeline-section');
+            html.push(createCheckItem(timelineSection ? 'ok' : 'error', `Timeline Section: ${timelineSection ? 'Encontrado' : 'NO ENCONTRADO'}`));
+            
+            const questionSection = document.querySelector('.question-section');
+            html.push(createCheckItem(questionSection ? 'ok' : 'error', `Question Section: ${questionSection ? 'Encontrado' : 'NO ENCONTRADO'}`));
+            
+            document.getElementById('fileDiags').innerHTML = html.join('');
+        }
+        
+        function getCssDiagnostics() {
+            const html = [];
+            
+            // Check CSS support
+            const computedStyle = getComputedStyle(document.body);
+            
+            // Backdrop filter
+            const backdropFilter = CSS.supports('backdrop-filter', 'blur(10px)');
+            html.push(createCheckItem(backdropFilter ? 'ok' : 'warning', `Backdrop Filter (Glassmorphism): ${backdropFilter ? 'Soportado' : 'Parcialmente soportado'}`));
+            
+            // Gradient animation
+            const gradient = CSS.supports('background', 'linear-gradient(135deg, #FFB6D9 0%, #D4A5E0 100%)');
+            html.push(createCheckItem(gradient ? 'ok' : 'error', `Gradientes: ${gradient ? 'Soportado' : 'NO SOPORTADO'}`));
+            
+            // CSS Grid
+            const cssGrid = CSS.supports('display', 'grid');
+            html.push(createCheckItem(cssGrid ? 'ok' : 'error', `CSS Grid: ${cssGrid ? 'Soportado' : 'NO SOPORTADO'}`));
+            
+            // CSS Flexbox
+            const flexbox = CSS.supports('display', 'flex');
+            html.push(createCheckItem(flexbox ? 'ok' : 'error', `Flexbox: ${flexbox ? 'Soportado' : 'NO SOPORTADO'}`));
+            
+            document.getElementById('cssDiags').innerHTML = html.join('');
+        }
+        
+        function getNetworkDiagnostics() {
+            const html = [];
+            
+            if (navigator.onLine) {
+                html.push(createCheckItem('ok', 'Conexión: En línea'));
+            } else {
+                html.push(createCheckItem('error', 'Conexión: Fuera de línea'));
+            }
+            
+            if ('connection' in navigator) {
+                const connection = navigator.connection;
+                html.push(createCheckItem('ok', `Tipo de red: ${connection.effectiveType}`));
+                html.push(createCheckItem('ok', `Velocidad: ${connection.downlink} Mbps`));
+            }
+            
+            document.getElementById('networkDiags').innerHTML = html.join('');
+        }
+        
+        function testLibraries() {
+            console.log('Probando librerías...');
+            
+            // Test Lottie
+            if (typeof confetti !== 'undefined') {
+                console.log('✓ Canvas Confetti funciona');
+                confetti({ particleCount: 30, spread: 70 });
+            } else {
+                console.error('✗ Canvas Confetti no está disponible');
+            }
+            
+            // Test audio
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                console.log('✓ Web Audio API disponible');
+            } catch (e) {
+                console.warn('⚠ Web Audio API no disponible');
+            }
+        }
+        
+        // ============================================
+        // RUN DIAGNOSTICS ON LOAD
+        // ============================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('=== Iniciando Diagnóstico ===');
+            getBrowserDiagnostics();
+            getLibrariesDiagnostics();
+            getPerformanceDiagnostics();
+            getFilesDiagnostics();
+            getCssDiagnostics();
+            getNetworkDiagnostics();
+            console.log('=== Diagnóstico Completado ===');
+        });
+        
+        // Monitor for errors
+        window.addEventListener('error', function(event) {
+            console.error(`Error: ${event.message} en ${event.filename}:${event.lineno}`);
+        });
+        
+        // Monitor for unhandled promise rejections
+        window.addEventListener('unhandledrejection', function(event) {
+            console.error(`Promise rejected: ${event.reason}`);
+        });
+    </script>
+</body>
+</html>

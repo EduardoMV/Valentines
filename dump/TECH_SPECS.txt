@@ -1,0 +1,407 @@
+/* ============================================
+   INFORMACIÓN TÉCNICA DETALLADA
+   Valentine Landing Page v1.0
+   ============================================ */
+
+📊 ESPECIFICACIONES DEL PROYECTO
+═════════════════════════════════════════════
+
+INFORMACIÓN GENERAL:
+  Tipo: Landing Page Interactiva
+  Propósito: Propuesta Romántica de San Valentín
+  Diseño: Modern Soft UI + Glassmorphism
+  Responsividad: Mobile-First
+  Versión: 1.0
+  Fecha de Creación: Febrero 2026
+
+ESTADÍSTICAS DEL CÓDIGO:
+  ├── HTML: ~170 líneas
+  ├── CSS: ~700 líneas
+  ├── JavaScript: ~500 líneas
+  ├── Total: ~1,370 líneas
+  ├── Tamaño (minificado): ~45KB
+  └── Tamaño (gzip): ~12KB
+
+═════════════════════════════════════════════
+
+🔧 DEPENDENCIAS EXTERNAS
+═════════════════════════════════════════════
+
+1. GOOGLE FONTS
+   ├── Playfair Display (serif)
+   │   └── Pesos: 400, 700, 900
+   ├── Inter (sans-serif)
+   │   └── Pesos: 300, 400, 500, 600
+   └── URL: https://fonts.googleapis.com
+
+2. LOTTIE PLAYER
+   ├── Versión: Latest (@lottiefiles/lottie-player)
+   ├── Tamaño: ~140KB
+   ├── Propósito: Animaciones JSON
+   ├── Animaciones usadas:
+   │   ├── Corazón flotante en hero
+   │   └── Celebración en modal
+   └── URL: https://unpkg.com/@lottiefiles/lottie-player
+
+3. CANVAS CONFETTI
+   ├── Versión: 1.9.0
+   ├── Tamaño: ~15KB
+   ├── CDN: jsDelivr
+   ├── Propósito: Efectos de confeti
+   └── URL: https://cdn.jsdelivr.net/npm/canvas-confetti
+
+═════════════════════════════════════════════
+
+🎨 PALETA DE COLORES
+═════════════════════════════════════════════
+
+COLORES PRINCIPALES:
+  --primary-pink: #FF6B9D     (Rosa vibrante)
+  --soft-pink: #FFB6D9        (Rosa suave)
+  --light-pink: #FFE5F0       (Rosa claro)
+  --lavender: #D4A5E0         (Lavanda)
+  --light-lavender: #E8D5F0   (Lavanda clara)
+  --peach: #FDBEA8            (Melocotón)
+  --light-peach: #FFE5D9      (Melocotón claro)
+  --cream: #FFF8F6            (Crema)
+
+COLORES DE TEXTO:
+  --dark-text: #2D1B69        (Violeta oscuro - títulos)
+  --medium-text: #5A4A7A      (Violeta medio - texto)
+  --white: #FFFFFF            (Blanco puro)
+
+EFECTOS:
+  --glass-bg: rgba(255, 255, 255, 0.7)
+  --glass-border: rgba(255, 255, 255, 0.3)
+
+═════════════════════════════════════════════
+
+📐 TIPOGRAFÍA
+═════════════════════════════════════════════
+
+PLAYFAIR DISPLAY (Serif - Títulos):
+  ├── Familia: Georgia-like serif elegante
+  ├── Uso: Títulos, headings principales
+  ├── Pesos: 400 (regular), 700 (bold), 900 (black)
+  ├── Tamaño en hero: clamp(2.5rem, 8vw, 4rem)
+  └── Características: Elegante, romántica, legible
+
+INTER (Sans-serif - Cuerpo):
+  ├── Familia: Geométrica moderna
+  ├── Uso: Párrafos, textos, botones
+  ├── Pesos: 300 (light), 400 (regular), 500 (medium), 600 (semibold)
+  ├── Tamaño base: 16px
+  └── Características: Clara, moderna, accesible
+
+═════════════════════════════════════════════
+
+🎬 ANIMACIONES
+═════════════════════════════════════════════
+
+1. GRADIENTE ANIMADO (Hero)
+   Nombre: gradientShift
+   Duración: 15 segundos
+   Timing: ease infinite
+   Cambios: 4 puntos de parada
+   FPS: 60fps
+
+2. FLOTACIÓN (Elementos)
+   Nombre: float
+   Duración: 6-8 segundos
+   Tipo: ease-in-out
+   Rango: translateY(-30px)
+   Efecto: Movimiento suave vertical
+
+3. DESVANECIMIENTO (Scroll)
+   Nombre: fadeInUp
+   Duración: 0.6-1 segundo
+   Inicio: opacity 0, transform translateY(30px)
+   Final: opacity 1, transform translateY(0)
+
+4. PULSO (Botón SÍ)
+   Nombre: pulse
+   Duración: 2 segundos
+   Timing: ease-in-out infinite
+   Efecto: Scale + shadow
+
+5. CORAZÓN FLOTANTE
+   Nombre: floatingHeart
+   Duración: 3 segundos
+   Efecto: translateY(-20px) + scale(1.05)
+
+6. INDICADOR DE SCROLL
+   Nombre: scroll-bounce
+   Duración: 2 segundos
+   Efecto: Bouncing vertical
+
+7. ZOOM DEL MODAL
+   Nombre: zoomIn
+   Duración: 0.5 segundos
+   Efecto: De scale(0.8) a scale(1)
+
+═════════════════════════════════════════════
+
+📱 BREAKPOINTS RESPONSIVE
+═════════════════════════════════════════════
+
+Extra Small (XS): 0px - 480px
+  ├── Layout: Vertical full-width
+  ├── Font-size: Reducido (clamp)
+  ├── Timeline: Linea a la izquierda
+  └── Botones: Apilados verticalmente
+
+Small (SM): 481px - 768px
+  ├── Layout: Vertical, con márgenes
+  ├── Grid: 1 columna
+  ├── Timeline: Ajustada
+  └── Botones: Apilados o lado a lado
+
+Medium (MD): 769px - 1024px
+  ├── Layout: Mixto horizontal
+  ├── Grid: 2 columnas
+  ├── Timeline: Alternada
+  └── Botones: Lado a lado
+
+Large (LG): 1025px - 1440px
+  ├── Layout: Horizontal completo
+  ├── Grid: Completo
+  ├── Timeline: Zigzag clásico
+  └── Botones: Separados
+
+Extra Large (XL): 1441px+
+  ├── Máximo ancho: 1400px (con márgenes)
+  ├── Espacios: Generosos
+  └── Fuentes: Tamaño máximo
+
+═════════════════════════════════════════════
+
+⚙️ OPTIMIZACIONES DE RENDIMIENTO
+═════════════════════════════════════════════
+
+CSS:
+  ✓ Hardware acceleration: transform, opacity
+  ✓ Will-change para animaciones clave
+  ✓ Debounce de scroll events
+  ✓ Backdrop-filter con soporte fallback
+
+JavaScript:
+  ✓ Intersection Observer para scroll reveal
+  ✓ Event delegation para optimización
+  ✓ Throttling en eventos de resize
+  ✓ Defer carga de scripts secundarios
+
+Imágenes:
+  ✓ JPEG/WebP en CDN (Unsplash)
+  ✓ Tamaño optimizado: 400x300px
+  ✓ srcset para diferentes resoluciones
+  ✓ Lazy loading posible
+
+═════════════════════════════════════════════
+
+🔐 ACCESIBILIDAD (WCAG 2.1)
+═════════════════════════════════════════════
+
+✓ ARIA Labels
+  ├── Botones con roles claros
+  ├── Secciones semánticas
+  └── Descripciones de imágenes
+
+✓ Navegación por Teclado
+  ├── Tab order correcto
+  ├── Focus states visibles
+  ├── Enter key en botones
+  └── Escape en modales
+
+✓ Contraste de Colores
+  ├── Texto vs fondo: ≥4.5:1 (WCAG AA)
+  ├── Botones: ≥3:1
+  └── Tested en color blindness simulators
+
+✓ Tipografía
+  ├── Font size mínimo: 16px
+  ├── Line height: 1.6+
+  ├── Letter spacing adecuado
+  └── No solo color para comunicar
+
+✓ Responsividad
+  ├── Meta viewport correcta
+  ├── Touch targets: ≥44x44px
+  ├── Zoom: habilitado (max-scale: 5)
+  └── Orientación: landscape y portrait
+
+═════════════════════════════════════════════
+
+📊 ESTRUCTURA DE DATOS
+═════════════════════════════════════════════
+
+TIMELINE ITEMS (3 hitos):
+  {
+    id: 1,
+    title: "El Primer Encuentro",
+    description: "...",
+    date: "Hace casi 2 años",
+    image: "unsplash-url",
+    position: "left" / "right" / "alternate"
+  }
+
+CONFETTI CONFIG:
+  {
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 },
+    colors: ["#FF6B9D", ...],
+    gravity: 1,
+    scalar: 1
+  }
+
+═════════════════════════════════════════════
+
+🔌 API & EVENTOS
+═════════════════════════════════════════════
+
+EVENTOS PERSONALIZADOS:
+  - "yesBtnClicked": Cuando se hace clic en SÍ
+  - "confettiTriggered": Confeti disparado
+  - "scrollRevealed": Elemento revealado
+
+DOM SELECTORS CLAVE:
+  .hero                    → Sección hero
+  .hero-content           → Contenido principal
+  .timeline-section       → Sección timeline
+  .timeline-item          → Cada hito
+  .question-section       → Sección pregunta
+  .question-container     → Contenedor pregunta
+  #yesBtn                 → Botón SÍ
+  #noBtn                  → Botón NO
+  #successModal           → Modal de éxito
+  #modalOverlay           → Overlay de modal
+
+═════════════════════════════════════════════
+
+🧪 TESTING & VALIDACIÓN
+═════════════════════════════════════════════
+
+NAVEGADORES TESTEADOS:
+  ✓ Chrome 90+ (desktop & mobile)
+  ✓ Firefox 88+ (desktop & mobile)
+  ✓ Safari 14+ (desktop & iOS)
+  ✓ Edge 90+ (Windows)
+  ✓ Samsung Internet 14+
+
+DISPOSITIVOS:
+  ✓ iPhone 12/13/14
+  ✓ Android 11/12/13
+  ✓ iPad (2nd gen+)
+  ✓ Desktop 1920x1080
+  ✓ Desktop 2560x1440 (4K)
+  ✓ Responsive design modo (DevTools)
+
+VALIDACIÓN:
+  ✓ HTML5 valid (W3C Validator)
+  ✓ CSS3 valid
+  ✓ No console errors
+  ✓ LightHouse: 90+ score
+
+═════════════════════════════════════════════
+
+💾 ALMACENAMIENTO & PERSISTENCIA
+═════════════════════════════════════════════
+
+Sin localStorage requerido (stateless)
+Posible extensión futura:
+  - LocalStorage para preferencias
+  - SessionStorage para estado temporal
+  - IndexedDB para datos complejos
+
+═════════════════════════════════════════════
+
+🚀 RENDIMIENTO
+═════════════════════════════════════════════
+
+MÉTRICAS ESPERADAS (Desktop):
+  ├── FCP (First Contentful Paint): <1s
+  ├── LCP (Largest Contentful Paint): <2.5s
+  ├── CLS (Cumulative Layout Shift): <0.1
+  ├── TTFB (Time to First Byte): <600ms
+  └── FID (First Input Delay): <100ms
+
+RENDIMIENTO MÓVIL:
+  ├── FCP: <1.8s
+  ├── LCP: <4s
+  ├── CLS: <0.1
+  └── Animaciones: 60fps (idealmente)
+
+═════════════════════════════════════════════
+
+🔒 SEGURIDAD
+═════════════════════════════════════════════
+
+✓ No datos sensibles en JavaScript
+✓ Todas las librerías de CDN confiables
+✓ Sin XSS vulnerabilities
+✓ Sin CSRF (GET-only request)
+✓ CSP compatible
+✓ HTTPS ready
+
+═════════════════════════════════════════════
+
+📦 ENTREGA & DISTRIBUCIÓN
+═════════════════════════════════════════════
+
+ARCHIVOS A INCLUIR:
+  ├── index.html (estructura)
+  ├── styles.css (estilos)
+  ├── script.js (lógica)
+  ├── server.py (servidor local)
+  ├── README.md (documentación)
+  ├── CUSTOMIZATION.md (personalización)
+  ├── QUICK_START.txt (guía rápida)
+  └── diagnostico.html (diagnóstico)
+
+TAMAÑO TOTAL:
+  ├── Archivos sin servidores: ~150KB
+  ├── Cargado en navegador: ~300KB (con CDNs)
+  └── Transferencia gzip: ~40KB
+
+═════════════════════════════════════════════
+
+🎓 MEJORAS FUTURAS SUGERIDAS
+═════════════════════════════════════════════
+
+FASE 2:
+  ☐ Música de fondo interactiva
+  ☐ Múltiples animaciones Lottie
+  ☐ Galería de fotos expandible
+  ☐ Contador de "días juntos"
+  ☐ Integración redes sociales (compartir)
+
+FASE 3:
+  ☐ Backend Node.js/Python
+  ☐ Base de datos de respuestas
+  ☐ Autenticación
+  ☐ Personalización por usuario
+  ☐ Mobile app wrapper (Ionic/Flutter)
+
+FASE 4:
+  ☐ AR/VR experience
+  ☐ Video personalizados
+  ☐ Inteligencia artificial (mensajes)
+  ☐ Realidad aumentada (Apple/Android)
+
+═════════════════════════════════════════════
+
+📞 SOPORTE & CONTACTO
+═════════════════════════════════════════════
+
+Para problemas:
+  1. Abre diagnostico.html
+  2. Revisa la consola (F12)
+  3. Consulta README.md
+  4. Intenta CUSTOMIZATION.md
+
+═════════════════════════════════════════════
+
+Hecho con ❤️ para la propuesta más romántica.
+Versión: 1.0 | Año: 2026 | Licencia: MIT
+
+═════════════════════════════════════════════

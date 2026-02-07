@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín, Fer?</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐰</text></svg>">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js" defer></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="counter-box glassmorphism reveal">
+            <p>Llevamos escribiendo nuestra historia</p>
+            <div class="counter-number">
+                <span id="daysCounter">0</span>
+                <span class="days-label">días</span>
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <div class="animation-container">
+                <div class="bunnies-decoration">
+                    <span class="bunny left">🐰</span>
+                    <span class="bunny right">🐰</span>
+                </div>
+                <div class="beating-heart">❤️</div>
+            </div>
+            <h1 class="hero-title">¡Hola corazon! Bienvenida a nuestro libro</h1>
+            <p class="hero-subtitle">Desplázate para descubrir nuestros origenes.</p>
+            
+            <div class="scroll-indicator">
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section (Our Story) -->
+    <section class="timeline-section">
+        <div class="timeline-container">
+            <h2 class="section-title">Nuestra Historia</h2>
+            
+            <div class="timeline">
+                <!-- Vallarta -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glassmorphism">
+                        <div class="timeline-image">
+                            <img src="src/1.jpeg" alt="Nuestro primer encuentro">
+                        </div>
+                        <div class="timeline-text">
+                            <h3>Prólogo. 1 Vallarta</h3>
+                            <p>El dia en el que dos extraños decidieron aventurarse en el alma del otro, desvelos, confesiones y secretos que dejaron entrever magia como ninguna otra.</p>
+                            <span class="timeline-date">Our first unofficial trip</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1era fiesta -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glassmorphism">
+                        <div class="timeline-image">
+                            <img src="src/26.jpeg" alt="Momentos especiales">
+                        </div>
+                        <div class="timeline-text">
+                            <h3>Prólogo. 2 Nuestras primeras salidas</h3>
+                            <p>Timidos, ajenos y a la vez cercanos, nuestra primera fiesta, nuestra primera incursion, nuestro primer acercamiento...</p>
+                            <span class="timeline-date">Kindred spirits.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cumple -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glassmorphism">
+                        <div class="timeline-image">
+                            <img src="src/2.jpeg" alt="Momentos especiales">
+                        </div>
+                        <div class="timeline-text">
+                            <h3>Prólogo. 3 Cumpleaños</h3>
+                            <p>Lo eramos todo sin decirnos nada, amantes silenciosos con anhelo por el otro, el mar en espera de la luna.</p>
+                            <span class="timeline-date">A strong step in our journey.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pedida -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glassmorphism">
+                        <div class="timeline-image">
+                            <img src="src/3.jpeg" alt="Momentos especiales">
+                        </div>
+                        <div class="timeline-text">
+                            <h3>Cap. 1 El cierre de un ciclo</h3>
+                            <p>Todo tiene un curso, una trascendencia y un tiempo; Este fue el nuestro, el inicio de toda una vida juntos, llena de aventuras.</p>
+                            <span class="timeline-date">Y el inicio de nuestro libro</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Locuras -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glassmorphism">
+                        <div class="timeline-image carousel-container">
+                            <img src="src/21.jpeg" class="carousel-slide active" alt="Foto 1">
+                            <img src="src/L6.jpeg" class="carousel-slide" alt="Foto 1">
+                            <img src="src/L3.jpeg" class="carousel-slide" alt="Foto 1">
+                            <img src="src/LL.jpeg" class="carousel-slide" alt="Foto 1">
+                            <img src="src/L4.jpeg" class="carousel-slide" alt="Foto 1">
+                            <img src="src/L5.jpeg" class="carousel-slide" alt="Foto 1">
+                            <img src="src/L7.jpeg" class="carousel-slide" alt="Foto 1">
+                            <img src="src/L8.jpeg" class="carousel-slide" alt="Foto 1">
+                            <img src="src/6.jpeg" class="carousel-slide" alt="Foto 2">
+                            
+                            <button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+                            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+                        </div>
+                        <div class="timeline-text">
+                            <h3>Cap. 2 Locuras</h3>
+                            <p>Por que en un mundo aburrido tu y yo le ponemos color a la vida, somos el complemento perfecto, locos, divertidos y apasionados por el otro, no hay mejor combinación!</p>
+                            <span class="timeline-date">As crazy as we could get.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Party! -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glassmorphism">
+                        <div class="timeline-image carousel-container">
+                            <img src="src/17.jpeg" class="carousel-slide active" alt="Foto 1">
+                            <img src="src/22.jpeg" class="carousel-slide" alt="Foto 1">
+                            <img src="src/5.jpeg" class="carousel-slide" alt="Foto 1">
+                            <img src="src/26.jpeg" class="carousel-slide" alt="Foto 1">
+                            
+                            <button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+                            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+                        </div>
+                        <div class="timeline-text">
+                            <h3>Cap. 3 Party</h3>
+                            <p>We party, and we party hard! Por mas aventuras locas y divertidas.</p>
+                            <span class="timeline-date">Cualquier momento contigo, es un momento divertido!</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Our adventures -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glassmorphism">
+                        <div class="timeline-image carousel-container">
+                            <img src="src/16.jpeg" class="carousel-slide active" alt="Foto 1">
+                            <img src="src/15.jpeg" class="carousel-slide" alt="Foto 1">
+                            
+                            <button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+                            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+                        </div>
+                        <div class="timeline-text">
+                            <h3>Cap. 4 Our adventures</h3>
+                            <p>Por que nuestra relacion es todo menos aburrida, aventuras sobran y tiempo nos falta, mi piloto, mi compañera de gym y mi cantante favorita.</p>
+                            <span class="timeline-date">Me encanta ir al gym contigo.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Presente en eventos importantes -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glassmorphism">
+                        <div class="timeline-image carousel-container">
+                            <img src="src/13.jpeg" class="carousel-slide active" alt="Foto 1">
+                            <img src="src/Imp.jpeg" class="carousel-slide" alt="Foto 1">
+                            <img src="src/12.jpeg" class="carousel-slide" alt="Foto 1">
+                            <img src="src/11.jpeg" class="carousel-slide" alt="Foto 1">
+                            <img src="src/14.jpeg" class="carousel-slide" alt="Foto 1">
+                            
+                            <button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+                            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+                        </div>
+                        <div class="timeline-text">
+                            <h3>Cap. 5 No todo es fiesta</h3>
+                            <p>No solo eres una compañera divertida, eres el amor de mi vida, siempre estas presente en los momentos mas importantes, apoyandome, amandome y siendo increible.</p>
+                            <span class="timeline-date">Nurturing our biggest moments.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Las miradas no mienten -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glassmorphism">
+                        <div class="timeline-image carousel-container">
+                            <img src="src/18.jpeg" class="carousel-slide active" alt="Foto 1">
+                            <img src="src/19.jpeg" class="carousel-slide" alt="Foto 1">
+                            <img src="src/Kiss.jpeg" class="carousel-slide" alt="Foto 1">
+                            
+                            <button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+                            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+                        </div>
+                        <div class="timeline-text">
+                            <h3>Cap. 6 Eyes don't lie</h3>
+                            <p>Esta conexión no solo se ve... Se siente, en el aire, en el ambiente, y en esas miradas feroces que nos intercambiamos, eres mi todo, soy tu todo, una mezcla perfecta entre ying y yang.</p>
+                            <span class="timeline-date">Our love's tangible.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The promise -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glassmorphism">
+                        <div class="timeline-image">
+                            <img src="src/Promise.jpeg" alt="Foto 1">
+                        </div>
+                        <div class="timeline-text">
+                            <h3>Cap. 7 The promise</h3>
+                            <p>El 29 de Julio de 2025, con el corazón en una mano y un anillo en la otra, te prometi que esta historia de amor era eterna, hermosa y con un futuro brillante.</p>
+                            <span class="timeline-date">My one and only.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modeling -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glassmorphism">
+                        <div class="timeline-image carousel-container">
+                            <img src="src/4.jpeg" class="carousel-slide active" alt="Foto 1">
+                            <img src="src/20.jpeg" class="carousel-slide" alt="Foto 1">
+                            <img src="src/18.jpeg" class="carousel-slide" alt="Foto 1">
+                            
+                            <button class="carousel-btn prev" onclick="moveSlide(this, -1)">❮</button>
+                            <button class="carousel-btn next" onclick="moveSlide(this, 1)">❯</button>
+                        </div>
+                        <div class="timeline-text">
+                            <h3>Cap. 8 Los mas guapos</h3>
+                            <p>Por que no solo tenemos una quimica envidiable, ambos estamos guapisimos, somos una obra de arte de pies a cabeza.</p>
+                            <span class="timeline-date">We conquer, we dive, we divide.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The story continues -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glassmorphism">
+                        <div class="timeline-image">
+                            <img src="src/25.jpeg" class="carousel-slide active" alt="Foto 1">
+                        </div>
+                        <div class="timeline-text">
+                            <h3>Cap. ? Foretelling</h3>
+                            <p>Y la historia seguira escribiendose, te AMO con la vida, gracias por ser mi novia.</p>
+                            <span class="timeline-date">LOML.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Big Question Section -->
+    <section class="question-section">
+        <div class="bunnies-bg">
+            <span class="bunny-bg">🐰</span>
+            <span class="bunny-bg">🐰</span>
+        </div>
+        <div class="question-container glassmorphism">
+            <h2 class="question-title">Wanna be my Valentine love?</h2>
+            <p class="question-subtitle">No hay nada en el mundo que desee más que poder pasar este día contigo.</p>
+            
+            <div class="buttons-container">
+                <button class="btn btn-yes" id="yesBtn">¡SÍ!</button>
+                <button class="btn btn-no" id="noBtn">No</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content glassmorphism">
+            <div class="modal-animation">
+                <div class="celebration-emojis">
+                    <span class="emoji">✨</span>
+                    <span class="emoji">💕</span>
+                    <span class="emoji">✨</span>
+                </div>
+            </div>
+            <h2>You love me baby, see you soon!</h2>
+            <p>Te amo, bombón ❤️</p>
+            <button class="btn btn-close" id="closeModalBtn">Cerrar</button>
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="src/LoveCarin.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <button id="musicBtn" class="music-control glassmorphism">
+        🎵
+    </button>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
